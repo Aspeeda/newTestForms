@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class testForms {
+public class TestForms {
     String name = "Ivan";
     String surname = "Ivanov";
     String email = "example@example.ru";
@@ -49,6 +49,7 @@ public class testForms {
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text(name), text(surname),
-                text(email), text(phNumber));
+                text(email), text(phNumber),text("30 December,1989"), text(subject),text("Sports"),text("1.jpg"),
+                text(address), text("NCR Delhi"));
     }
 }
