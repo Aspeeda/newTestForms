@@ -1,18 +1,27 @@
 package pages;
 
+import com.github.javafaker.Faker;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class TestData {
-    public static String name = "Ivan";
-    public static String surname = "Ivanov";
-    public static String email = "example@example.ru";
-    public static String phNumber = "8123321789";
-    public static String subject = "English";
-    public static String address = "city, street, house 1";
-    public static String gender = "Male";
-    public static String day = ("30");
-    public static String month = ("December");
-    public static String year = ("1989");
-    public static String hobby = "Sports";
-    public static String state = "NCR";
-    public static String city = "Delhi";
-    public static String picPath = "1.jpg";
+    static Faker faker = new Faker();
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
+    static String[] birthday = dateFormat.format(faker.date().birthday()).split(" ");
+
+    public static String name = faker.name().firstName(),
+            email = faker.internet().emailAddress(),
+            surname = faker.name().lastName(),
+            phNumber = faker.phoneNumber().subscriberNumber(10),
+            subject = "English",
+            address = faker.address().fullAddress(),
+            gender = "Male",
+            day = birthday[0],
+            month = birthday[1],
+            year = birthday[2],
+            hobby = "Sports",
+            state = "NCR",
+            city = "Delhi",
+            picPath = "1.jpg";
 }
