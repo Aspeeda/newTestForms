@@ -1,53 +1,38 @@
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.TestData;
 
 public class TestForms extends TestBase {
-    String name = "Ivan";
-    String surname = "Ivanov";
-    String email = "example@example.ru";
-    String phNumber = "8123321789";
-    String subject = "English";
-    String address = "city, street, house 1";
-    String gender = "Male";
-    String day = ("30");
-    String month = ("December");
-    String year = ("1989");
-    String hobby = "Sports";
-    String state = "NCR";
-    String city = "Delhi";
-    String picPath = "1.jpg";
-    // можно сделать модель данных
     @Test
     void successfulRegistrationTest() {
-        RegistrationPage page = new RegistrationPage();
 
         /**Открытие страницы и заполнение полей*/
-        page.openPage()
-                .setName(name)
-                .setSurName(surname)
-                .setEmail(email)
-                .setGender(gender)
-                .setPhone(phNumber)
-                .setBirthdate(day, month, year)
-                .setSubject(subject)
-                .setHobby(hobby)
-                .uploadPic("img/"+picPath)
-                .setAddress(address)
-                .selectState(state)
-                .selectCity(city)
+        registrationPage.openPage()
+                .setName(TestData.name)
+                .setSurName(TestData.surname)
+                .setEmail(TestData.email)
+                .setGender(TestData.gender)
+                .setPhone(TestData.phNumber)
+                .setBirthdate(TestData.day, TestData.month, TestData.year)
+                .setSubject(TestData.subject)
+                .setHobby(TestData.hobby)
+                .uploadPic("img/" + TestData.picPath)
+                .setAddress(TestData.address)
+                .selectState(TestData.state)
+                .selectCity(TestData.city)
                 .clickSubmit();
 
         /**Проверка значений*/
-        page.verifyResultsModalAppears()
-                .verifyResult("Student Name", name + " " + surname)
-                .verifyResult("Student Email", email)
-                .verifyResult("Gender", gender)
-                .verifyResult("Mobile", phNumber)
-                .verifyResult("Date of Birth", day + " " + month + "," + year)
-                .verifyResult("Subjects", subject)
-                .verifyResult("Hobbies", hobby)
-                .verifyResult("Picture", picPath)
-                .verifyResult("Address", address)
-                .verifyResult("State and City", state + " " + city);
+        registrationPage.verifyResultsModalAppears()
+                .verifyResult("Student Name", TestData.name + " " + TestData.surname)
+                .verifyResult("Student Email", TestData.email)
+                .verifyResult("Gender", TestData.gender)
+                .verifyResult("Mobile", TestData.phNumber)
+                .verifyResult("Date of Birth", TestData.day + " " + TestData.month + "," + TestData.year)
+                .verifyResult("Subjects", TestData.subject)
+                .verifyResult("Hobbies", TestData.hobby)
+                .verifyResult("Picture", TestData.picPath)
+                .verifyResult("Address", TestData.address)
+                .verifyResult("State and City", TestData.state + " " + TestData.city);
     }
 }
