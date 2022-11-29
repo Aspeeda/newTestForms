@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
 import pages.TestData;
 
 public class TestForms extends TestBase {
